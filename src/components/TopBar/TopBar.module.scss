@@ -2,6 +2,7 @@
 
 .topBar {
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   left: 0;
   height: 64px;
