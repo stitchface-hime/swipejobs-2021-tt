@@ -1,0 +1,16 @@
+.topBar {
+  position: sticky;
+  height: 64px;
+  background-color: black;
+  color: white;
+  .topBarContents {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 50px;
+    height: 100%;
+    max-width: 1200px;
+  }
+}
