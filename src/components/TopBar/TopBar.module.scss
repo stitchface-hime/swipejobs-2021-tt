@@ -1,5 +1,9 @@
+@import "src/styles/variables";
+
 .topBar {
   position: sticky;
+  top: 0;
+  left: 0;
   height: 64px;
   background-color: black;
   color: white;
@@ -9,8 +13,11 @@
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 20px;
     height: 100%;
     max-width: 1200px;
+    @media #{$from-small} {
+      padding: 0 50px;
+    }
   }
 }

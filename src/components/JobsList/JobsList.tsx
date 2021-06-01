@@ -1,28 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "src/App";
+import React, { useEffect, useState } from "react";
+import { useWorker } from "src/scripts/WorkerProvider";
 import { fetchWorkerMatches } from "src/scripts/callWorkerApi";
 
 import JobsItem from "./JobsItem";
+import { IJobItem } from "src/interfaces";
 
-export default function JobsList() {
-  const userId = useContext(UserContext);
-  const [workerMatches, setWorkerMatches] = useState({});
+import styles from "./JobsList.module.scss";
 
-  /*useEffect(() => {
+export default React.memo(function JobsList() {
+  const worker = useWorker();
+  const workerId = worker.state.workerId;
+  const [workerMatches, setWorkerMatches] = useState<IJobItem[]>([]);
+
+  useEffect(() => {
     async function initialFetch() {
       try {
-        const res = await fetchWorkerMatches(userId);
-        setWorkerMatches(res);
+        const res = await fetchWorkerMatches(workerId);
+        const data = await res.json();
+        setWorkerMatches(data);
       } catch (err) {
         console.error("Failed to fetch worker info.");
       }
     }
     initialFetch();
-  }, [userId]);*/
+  }, [workerId]);
 
   return (
-    <div>
-      <JobsItem job={{}} />
+    <div className={styles.jobList}>
+      {workerMatches.map((match) => (
+        <JobsItem key={match.jobId} job={match} />
+      ))}
     </div>
   );
-}
+});

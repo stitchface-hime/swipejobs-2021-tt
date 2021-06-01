@@ -1,6 +1,7 @@
 @import "variables";
 
 body {
+  background-color: lightgray;
   margin: 0;
 }
 
@@ -18,4 +19,26 @@ p,
 span,
 button {
   font-family: $normal-font;
+}
+
+button {
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-neutral-outline {
+  box-shadow: inset 0px 0px 0px 1px gray;
+  background-color: white;
+  color: gray;
+}
+
+.button-neutral {
+  background-color: black;
+  color: white;
+}
+
+.icon {
+  font-family: $icon-font;
+  font-size: 24px;
 }
